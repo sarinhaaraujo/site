@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fluxograma Interativo - Café da Manhã com Mais Opções</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+
+    .container {
+      text-align: center;
+      background-color: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .bloco {
+      background-color: #f0f0f0;
+      border: 2px solid #333;
+      padding: 20px;
+      width: 250px;
+      margin: 20px auto;
+      border-radius: 10px;
+      position: relative;
+      display: none;
+    }
+
+    button {
+      background-color: #333;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      margin: 10px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="inicio" class="bloco" style="display: block;">
+      <h3>Você acorda</h3>
+      <button onclick="mostrarBloco('fome')">Continuar</button>
+    </div>
+
+    <div id="fome" class="bloco">
+      <h3>Está com fome?</h3>
+      <button onclick="mostrarBloco('escolhaComida')">Sim</button>
+      <button onclick="mostrarBloco('semFome')">Não</button>
+    </div>
+
+    <div id="escolhaComida" class="bloco">
+      <h3>Escolha o café da manhã</h3>
+      <button onclick="mostrarBloco('pao')">Pão</button>
+      <button onclick="mostrarBloco('frutas')">Frutas</button>
+      <button onclick="mostrarBloco('cereal')">Cereal</button>
+    </div>
+
+    <div id="pao" class="bloco">
+      <h3>Você escolheu Pão</h3>
+      <button onclick="mostrarBloco('bebida')">Escolher bebida</button>
+    </div>
+
+    <div id="frutas" class="bloco">
+      <h3>Você escolheu Frutas</h3>
+      <button onclick="mostrarBloco('bebida')">Escolher bebida</button>
+    </div>
+
+    <div id="cereal" class="bloco">
+      <h3>Você escolheu Cereal</h3>
+      <button onclick="mostrarBloco('bebida')">Escolher bebida</button>
+    </div>
+
+    <div id="bebida" class="bloco">
+      <h3>Escolha uma bebida</h3>
+      <button onclick="mostrarBloco('cafe')">Café</button>
+      <button onclick="mostrarBloco('suco')">Suco</button>
+      <button onclick="mostrarBloco('cha')">Chá</button>
+    </div>
+
+    <div id="cafe" class="bloco">
+      <h3>Você escolheu Café</h3>
+      <button onclick="mostrarBloco('atividade')">Continuar</button>
+    </div>
+
+    <div id="suco" class="bloco">
+      <h3>Você escolheu Suco</h3>
+      <button onclick="mostrarBloco('atividade')">Continuar</button>
+    </div>
+
+    <div id="cha" class="bloco">
+      <h3>Você escolheu Chá</h3>
+      <button onclick="mostrarBloco('atividade')">Continuar</button>
+    </div>
+
+    <div id="atividade" class="bloco">
+      <h3>O que fazer agora?</h3>
+      <button onclick="mostrarBloco('exercicio')">Exercício</button>
+      <button onclick="mostrarBloco('trabalho')">Trabalho</button>
+      <button onclick="mostrarBloco('descanso')">Descansar</button>
+    </div>
+
+    <div id="exercicio" class="bloco">
+      <h3>Você decidiu fazer exercício!</h3>
+      <p>Ótima escolha para começar o dia ativo!</p>
+      <button onclick="mostrarBloco('fim')">Fim</button>
+    </div>
+
+    <div id="trabalho" class="bloco">
+      <h3>Você começou a trabalhar</h3>
+      <p>Hora de ser produtivo e realizar suas tarefas.</p>
+      <button onclick="mostrarBloco('fim')">Fim</button>
+    </div>
+
+    <div id="descanso" class="bloco">
+      <h3>Você decidiu descansar</h3>
+      <p>Um pouco de relaxamento antes de começar o dia.</p>
+      <button onclick="mostrarBloco('fim')">Fim</button>
+    </div>
+
+    <div id="semFome" class="bloco">
+      <h3>Você não está com fome</h3>
+      <p>Você decidiu pular o café da manhã.</p>
+      <button onclick="mostrarBloco('atividade')">Continuar</button>
+    </div>
+
+    <div id="fim" class="bloco">
+      <h3>Fim</h3>
+      <p>Você terminou sua manhã!</p>
+      <button onclick="reiniciar()">Recomeçar</button>
+    </div>
+  </div>
+
+  <script>
+    function mostrarBloco(id) {
+      // Esconde todos os blocos
+      const blocos = document.querySelectorAll('.bloco');
+      blocos.forEach(bloco => bloco.style.display = 'none');
+
+      // Mostra o bloco correto
+      document.getElementById(id).style.display = 'block';
+    }
+
+    function reiniciar() {
+      mostrarBloco('inicio');
+    }
+  </script>
+</body>
+</html>
